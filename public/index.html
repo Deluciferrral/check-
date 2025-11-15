@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Cashing Service - Fast & Secure</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💰 Quick Check Cash</h1>
+            <p class="tagline">Cash your checks instantly with our secure service</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2>Cash Your Check</h2>
+                <p class="info-text">Upload a photo of your check and receive funds within minutes</p>
+                
+                <form id="check-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="check-amount">Check Amount ($)</label>
+                        <input type="number" id="check-amount" name="check-amount" required 
+                               min="10" max="5000" step="0.01" placeholder="0.00">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="check-front">Upload Check - Front Side</label>
+                        <input type="file" id="check-front" name="check-front" required 
+                               accept="image/*" capture="environment">
+                        <small>Please ensure the check is clearly visible</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="check-back">Upload Check - Back Side</label>
+                        <input type="file" id="check-back" name="check-back" required 
+                               accept="image/*" capture="environment">
+                        <small>Please sign the back of your check</small>
+                    </div>
+
+                    <div class="preview-container" id="preview-container">
+                        <div id="front-preview" class="preview"></div>
+                        <div id="back-preview" class="preview"></div>
+                    </div>
+
+                    <div class="fee-info">
+                        <p><strong>Service Fee:</strong> <span id="fee-amount">$0.00</span> (3% of check amount)</p>
+                        <p><strong>You'll Receive:</strong> <span id="net-amount">$0.00</span></p>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="submit-btn">
+                        Continue to Payment
+                    </button>
+                </form>
+
+                <div id="payment-section" class="payment-section" style="display: none;">
+                    <h3>Payment Information</h3>
+                    <p>Enter your payment details to complete the transaction</p>
+                    <div id="card-element"></div>
+                    <div id="card-errors" role="alert"></div>
+                    <button id="pay-btn" class="submit-btn">
+                        Pay Service Fee & Cash Check
+                    </button>
+                </div>
+
+                <div id="success-message" class="success-message" style="display: none;">
+                    <h3>✓ Success!</h3>
+                    <p>Your check has been submitted for processing.</p>
+                    <p>You will receive your funds within 1-2 business days.</p>
+                    <p>A confirmation email has been sent to your email address.</p>
+                </div>
+
+                <div id="error-message" class="error-message" style="display: none;">
+                    <h3>⚠ Error</h3>
+                    <p id="error-text"></p>
+                </div>
+            </div>
+
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3>🔒 Secure</h3>
+                    <p>Bank-level encryption protects your information</p>
+                </div>
+                <div class="info-card">
+                    <h3>⚡ Fast</h3>
+                    <p>Get your money within 1-2 business days</p>
+                </div>
+                <div class="info-card">
+                    <h3>💳 Easy</h3>
+                    <p>Simple process - just snap a photo</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Quick Check Cash. All rights reserved.</p>
+            <p class="disclaimer">Service fees apply. Terms and conditions apply.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
